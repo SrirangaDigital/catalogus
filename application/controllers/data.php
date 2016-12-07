@@ -12,22 +12,26 @@ class data extends Controller {
 		$this->insertDetails();
 	}
 
-	public function InsertData(){
-		ini_set('max_execution_time', 800);
+	public function insert(){
 
-		$metaData = $this->model->getMetadaData();
-		
-		$this->model->db->createDB(DB_NAME, DB_SCHEMA);
+		$data = $this->model->getData();
 
-		$dbh = $this->model->db->connect(DB_NAME);
+		if($data) {
 
-		$this->model->db->dropTable(METADATA_TABLE, $dbh);
+			$this->model->db->createDB(DB_NAME, DB_SCHEMA);
 
-		$this->model->db->createTable(METADATA_TABLE, $dbh, METADATA_TABLE_SCHEMA);
+			$dbh = $this->model->db->connect(DB_NAME);
+			$this->model->db->dropTable(BASEDATA_TABLE, $dbh);
+			$this->model->db->createTable(BASEDATA_TABLE, $dbh, BASEDATA_TABLE_SCHEMA);
 
-		foreach ($metaData as $row)
-		{
-			$this->model->db->insertData(METADATA_TABLE, $dbh, $row);
+			foreach ($data as $row) {
+
+				$this->model->db->insertData(BASEDATA_TABLE, $dbh, $row);
+			}
+		}
+		else{
+
+			$this->view('error/blah');
 		}
 	}
 }

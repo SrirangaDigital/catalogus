@@ -36,74 +36,6 @@ class Model {
 		}
 	}
 
-	public function listSeries() {
-
-		$dbh = $this->db->connect();
-		if(is_null($dbh))return null;
-		
-		$sth = $dbh->prepare('select distinct snum,year from project order by snum');
-		$sth->execute();
-
-		$i = 0;
-		while($result = $sth->fetch(PDO::FETCH_ASSOC))
-		{
-			$data[$i] = $result;
-	        $i++;
-		}
-		$dbh = null;
-		return $data;
-	}
-
-	public function listDepartments() {
-
-		$dbh = $this->db->connect();
-		if(is_null($dbh))return null;
-		
-		$sth = $dbh->prepare('SELECT DISTINCT department FROM project ORDER BY department');
-		$sth->execute();
-
-		$i = 0;
-		while($result = $sth->fetch(PDO::FETCH_ASSOC))
-		{
-			$data[$i] = $result;
-	        $i++;
-		}
-		$dbh = null;
-		return $data;
-	}
-
-	public function listColleges() {
-
-		$dbh = $this->db->connect();
-		if(is_null($dbh))return null;
-		
-		$sth = $dbh->prepare('SELECT DISTINCT college FROM project ORDER BY college');
-		$sth->execute();
-
-		$i = 0;
-		while($result = $sth->fetch(PDO::FETCH_ASSOC))
-		{
-			$data[$i] = $result;
-	        $i++;
-		}
-		$dbh = null;
-		return $data;
-	}
-
-	public function getCurrentIssue($journal = DEFAULT_JOURNAL) {
-
-		$this->db = new Database();
-		$dbh = $this->db->connect($journal);
-		if(is_null($dbh))return null;
-		
-		// Online issues are to filtered from appearing as current issues	
-		$sth = $dbh->prepare('SELECT DISTINCT volume, issue, year, month from ' . METADATA_TABLE . ' WHERE issue != \'online\' ORDER BY volume DESC, issue DESC LIMIT 1');
-		$sth->execute();
-		
-		$result = $sth->fetch(PDO::FETCH_OBJ);
-		return $result;
-	}
-
 	public function preProcessPOST ($data) {
 
 		return array_map("trim", $data);
@@ -152,6 +84,22 @@ class Model {
  
  		return $files;
  	}
+
+	public function devanagari2Roman($text) {
+
+        $text = str_replace("०", "0", $text);
+        $text = str_replace("१", "1", $text);
+        $text = str_replace("२", "2", $text);
+        $text = str_replace("३", "3", $text);
+        $text = str_replace("४", "4", $text);
+        $text = str_replace("५", "5", $text);
+        $text = str_replace("६", "6", $text);
+        $text = str_replace("७", "7", $text);
+        $text = str_replace("८", "8", $text);
+        $text = str_replace("९", "9", $text);
+      
+        return $text;
+    }
 }
 
 ?>
