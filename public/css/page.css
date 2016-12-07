@@ -594,6 +594,18 @@ a.moretag {
       column-count: 7;
   }
 }
+ .column-5{
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+      -moz-column-count: 2; /* Firefox */
+      column-count: 2;
+  }
+@media (min-width: 430px) {
+  .column-5{
+    -webkit-column-count: 5; /* Chrome, Safari, Opera */
+      -moz-column-count: 5; /* Firefox */
+      column-count: 5;
+  }
+}
 
 .alphabet{
   margin-bottom: 30px;

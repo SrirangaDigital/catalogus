@@ -146,3 +146,6 @@ ol.decimal{
 #footnote1-text, #footnote2-text, #footnote3-text{
 	display: none;
 }
+.f-san{
+	font-family: "Siddhanta" !important;
+}

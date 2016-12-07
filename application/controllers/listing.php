@@ -8,19 +8,14 @@ class listing extends Controller {
 	}
 
 	public function index() {
+
 		$this->alphabet();
 	}
 
-	public function alphabet($letter = DEFAULT_LETTER) {
+	public function letter($letter = DEFAULT_LETTER) {
 
-		$word = $this->model->listWordsOfAlphabet($letter);
-		//~ var_dump($word);
-		($word) ? $this->view('listing/alphabet', $word) : $this->view('error/index');
-	}
-	public function fragment($fragment = '') {
-
-		$data = $this->model->listWordsByFragment($fragment);
-		echo $data;
+		$words = $this->model->listWordsOfLetter($letter);
+		($words) ? $this->view('listing/words', $words) : $this->view('error/noResults');
 	}
 }
 

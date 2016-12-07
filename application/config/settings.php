@@ -2,6 +2,7 @@
 
 // db table names
 define('BASEDATA_TABLE', 'basedata');
+define('DEFAULT_LETTER', 'अ');
 
 // search settings
 define('SEARCH_OPERAND', 'AND');
