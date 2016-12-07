@@ -75,7 +75,7 @@
                     <li><a href="<?=BASE_URL?>page/flat/Home"><img src="<?=PUBLIC_URL?>images/logo.png" alt="Logo of the University of Mysore" class="logo"></a></li>
                     <li><a href="<?=BASE_URL?>page/flat/Home">About</a></li>
                     <li></li>
-                    <li><a href="#">Acknowledgements</a></li>
+                    <li><a href="#">Namami Project</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
