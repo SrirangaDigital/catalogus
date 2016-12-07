@@ -22,7 +22,7 @@ class dataModel extends Model {
 		$idNum = 1;
 		foreach ($xml->entry as $entry) {
 
-			$row['page'] = $this->devanagari2Roman((string) $entry['page']);
+			$row['page'] = sprintf("%04d", intval($this->devanagari2Roman((string) $entry['page'])));
 			$row['word'] = $entry->__toString();
 			$row['id'] = sprintf("%05d", $idNum++);
 

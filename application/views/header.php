@@ -71,7 +71,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-primary-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="<?=BASE_URL?>listing/alphabet/A">New Catalogus Catalogorum</a></li>
+                    <li class="active"><a href="<?=BASE_URL?>listing/letter">New Catalogus Catalogorum</a></li>
                     <li><a href="<?=BASE_URL?>page/flat/Home"><img src="<?=PUBLIC_URL?>images/logo.png" alt="Logo of the University of Mysore" class="logo"></a></li>
                     <li><a href="<?=BASE_URL?>page/flat/Home">About</a></li>
                     <li></li>
@@ -87,7 +87,7 @@
             <!-- Column 1 -->
             <div class="col-md-12 text-center">
                 <ul class="list-inline sub-nav">
-                    <li><a href="<?=BASE_URL?>listing/alphabet/A">Index</a></li>
+                    <li><a href="<?=BASE_URL?>listing/letter">Index</a></li>
                     <li><a>·</a></li>
                     <li><a>Search</a></li>
                     <li id="searchForm">

@@ -38,7 +38,7 @@
 
 <?php foreach ($data as $row) { ?>
 
-            <div><a href="<?=BASE_URL?>describe/word/<?=$row->word?>"><?=$viewHelper->processWord($row->word)?></a></div>    
+            <div><a target="_blank" href="<?=BASE_URL?>describe/word/<?=$row->page?>/<?=$row->word?>"><?=$viewHelper->processWord($row->word)?></a></div>    
 
 <?php } ?>
         </div>
