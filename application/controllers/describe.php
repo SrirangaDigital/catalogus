@@ -13,7 +13,7 @@ class describe extends Controller {
 
 	public function word($page = '', $word = '') {
 
-		$this->absoluteRedirect(VOLUMES_URL . '001/index.djvu?djvuopts&page=' . $page . '.djvu&zoom=page');
+		$this->absoluteRedirect(PUBLIC_URL . 'bookReader/templates/book.php?volume=001&page=' . $page );
 	}
 }
 
