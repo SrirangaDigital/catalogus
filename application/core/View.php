@@ -81,7 +81,12 @@ class View {
 		$viewHelper = new viewHelper();
 		$pageTitle = $this->getPageTitle($viewHelper, $path);
 
-		require_once 'application/views/header.php';
+		if(!preg_match('/describe\/word/', $path)){
+			require_once 'application/views/header.php';
+		}
+		else{
+			require_once 'application/views/header1.php';
+		}
 		
 		// if(preg_match('/flat\/Home/', $path)) require_once 'application/views/carousel.php';
 		

@@ -36,19 +36,22 @@ br.getPageURI = function(index, reduce, rotate) {
 	if(level == 1)
 	{
 		//~  to display loading popup
+		console.log(base_url + 'data/getImageUrl/'+level+ '/' + index + '/' + book.volume + '/' + book.imgurl + '/' +  this.mode);
 		br.showProgressPopup('<img id="searchmarker" src="'+this.imagesBaseURL + 'marker_srch-on.png'+'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...');
-		$.ajax({type: "POST", url: "../templates/bgconvert.php?&level="+level+"&index="+index+"&volume="+book.volume+"&imgurl="+book.imgurl+"&mode="+this.mode, async: true , success :function(data){br.updater(data);} , data : {book:this.book.imglist}});
+		$.ajax({type: "POST", url: base_url+"data/getImageUrl/"+level+"/"+index+"/"+book.volume+"/"+this.mode, async: true , success :function(data){br.updater(data);} , data : {book:this.book.imglist}});
 		return br.imagesBaseURL + "transparent.png";
 	}
 	else
 	{
-		$.ajax({type: "POST", url: "../templates/bgconvert.php?level="+level+"&index="+index+"&volume="+book.volume+"&imgurl="+book.imgurl+"&mode="+this.mode, async: true , data : {book:this.book.imglist}});
+		console.log(base_url + 'data/getImageUrl/'+level+ '/' + index + '/' + book.volume + '/' + book.imgurl + '/' +  this.mode);
+		$.ajax({type: "POST", url: base_url+"data/getImageUrl/"+level+"/"+index+"/"+book.volume+"/"+this.mode, async: true , data : {book:this.book.imglist}});
 		return book.imgurl+"/"+book.imglist[index]
 	}
 	
 }
 br.updater = function(result) {
 	result = jQuery.parseJSON(result);
+	console.log(result);
 	if(result.mode == 2)
 	{
 		var img = document.getElementById(result.id);

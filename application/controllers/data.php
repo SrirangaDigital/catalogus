@@ -34,6 +34,30 @@ class data extends Controller {
 			$this->view('error/blah');
 		}
 	}
+
+	public function getImageUrl($level,$index,$volume,$mode){
+		
+		$book = $_POST['book'];
+		$imgurl = VOLUMES_URL . 'jpg/2/' . $volume;
+		$reduce = round($level);
+		$img = preg_split("/\./",$book[$index]);
+
+		if($reduce == 1)
+		{
+			$imgurl = VOLUMES_URL . "jpg/1/" . $volume;
+		}
+		$array['id'] = "#pagediv".$index;
+		$array['mode'] = $mode;
+		$array['img'] = $imgurl."/".$img[0].".jpg";
+		echo json_encode($array);
+
+		$myfile = fopen(PHY_PUBLIC_URL . "bookReader/templates/appcache.manifest", "w") or die("Unable to open file!!!");
+		fwrite($myfile,"CACHE MANIFEST\n");
+		fwrite($myfile,$imgurl."/".$img[0].".jpg");
+		fwrite($myfile,"\n\nNETWORK:\n*\n");
+		fwrite($myfile,"FALLBACK:\n");
+		fclose($myfile);
+	}
 }
 
 ?>
