@@ -3,5 +3,5 @@
 		<div id="BookReader">
 		    
 		</div>
-<script type="text/javascript" src="<?=PUBLIC_URL?>bookReader/static/BookReaderJSSimple.js"></script>
+<script type="text/javascript" src="<?=PUBLIC_URL?>js/BookReader/BookReaderJSSimple.js"></script>
 
