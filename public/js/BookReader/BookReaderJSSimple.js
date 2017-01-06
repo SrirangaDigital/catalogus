@@ -36,14 +36,12 @@ br.getPageURI = function(index, reduce, rotate) {
 	if(level == 1)
 	{
 		//~  to display loading popup
-		console.log(base_url + 'data/getImageUrl/'+level+ '/' + index + '/' + book.volume + '/' + book.imgurl + '/' +  this.mode);
 		br.showProgressPopup('<img id="searchmarker" src="'+this.imagesBaseURL + 'marker_srch-on.png'+'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...');
 		$.ajax({type: "POST", url: base_url+"data/getImageUrl/"+level+"/"+index+"/"+book.volume+"/"+this.mode, async: true , success :function(data){br.updater(data);} , data : {book:this.book.imglist}});
 		return br.imagesBaseURL + "transparent.png";
 	}
 	else
 	{
-		console.log(base_url + 'data/getImageUrl/'+level+ '/' + index + '/' + book.volume + '/' + book.imgurl + '/' +  this.mode);
 		$.ajax({type: "POST", url: base_url+"data/getImageUrl/"+level+"/"+index+"/"+book.volume+"/"+this.mode, async: true , data : {book:this.book.imglist}});
 		return book.imgurl+"/"+book.imglist[index]
 	}
@@ -51,7 +49,6 @@ br.getPageURI = function(index, reduce, rotate) {
 }
 br.updater = function(result) {
 	result = jQuery.parseJSON(result);
-	console.log(result);
 	if(result.mode == 2)
 	{
 		var img = document.getElementById(result.id);
@@ -128,7 +125,7 @@ br.bookTitle= book.Title;
 br.bookUrl  = book.SourceURL;
 
 // Override the path used to find UI images
-br.imagesBaseURL = '../static/BookReader/images/';
+br.imagesBaseURL = base_url+'public/images/BookReader/';
 
 br.getEmbedCode = function(frameWidth, frameHeight, viewParams) {
     return "Embed code not supported in bookreader demo.";
